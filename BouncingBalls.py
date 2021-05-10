@@ -42,8 +42,8 @@ def make_ball():
     ball.y = random.randrange(BALL_SIZE, SCREEN_HEIGHT - BALL_SIZE)
  
     # Speed and direction of rectangle
-    ball.change_x = random.randrange(-2, 3)
-    ball.change_y = random.randrange(-2, 3)
+    ball.change_x = random.randrange(1, 3) * random.choice([-1, 1])
+    ball.change_y = random.randrange(1, 3) * random.choice([-1, 1])
  
     return ball
  
@@ -82,8 +82,6 @@ def main():
                 if event.key == pygame.K_SPACE:
                     ball = make_ball()
                     ball_list.append(ball)
-                    ball = make_ball()
-                    ball_list.append(ball)
  
         # --- Logic
         for ball in ball_list:
@@ -93,7 +91,7 @@ def main():
  
             # Bounce the ball if needed
             if ball.y > SCREEN_HEIGHT - BALL_SIZE or ball.y < BALL_SIZE:
-                ball.change_y *= -2
+                ball.change_y *= -1
             if ball.x > SCREEN_WIDTH - BALL_SIZE or ball.x <= BALL_SIZE:
                 ball.change_x *= -1
  
