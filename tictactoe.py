@@ -22,7 +22,7 @@ for key in theBoard:
 def printBoard(board):
     print(board['7'] + '|' + board['8'] + '|' + board['9'])
     print('-+-+-')
-    print(board['4'] + '|' + board['6'] + '|' + board['5'])
+    print(board['4'] + '|' + board['5'] + '|' + board['6'])
     print('-+-+-')
     print(board['1'] + '|' + board['2'] + '|' + board['3'])
 
@@ -33,7 +33,7 @@ def game():
     count = 0
 
 
-    for i in range(8):
+    while True:
         printBoard(theBoard)
         print("It's your turn," + turn + ".Move to which place?")
 
@@ -68,7 +68,7 @@ def game():
                 print("\nGame Over.\n")                
                 print(" **** " +turn + " won. ****")
                 break
-            elif theBoard['2'] == theBoard['5'] == theBoard['7'] != ' ': # down the middle
+            elif theBoard['2'] == theBoard['5'] == theBoard['8'] != ' ': # down the middle
                 printBoard(theBoard)
                 print("\nGame Over.\n")                
                 print(" **** " +turn + " won. ****")
@@ -93,6 +93,7 @@ def game():
         if count == 9:
             print("\nGame Over.\n")                
             print("It's a Tie!!")
+            break
 
         # Now we have to change the player after every move.
         if turn =='X':
@@ -102,10 +103,9 @@ def game():
     
     # Now we will ask if player wants to restart the game or not.
     restart = input("Do want to play Again?(y/n)")
-    if restart == "y" or restart == "N":  
+    if restart == "y" or restart == "Y":
         for key in board_keys:
             theBoard[key] = " "
-
         game()
 
 if __name__ == "__main__":
